@@ -23,12 +23,23 @@
 </head>
 <body>
 
-<!-- Barebones YouTube embed -->
-<iframe
-  src="https://www.youtube.com/embed/8po-LoL8Lz0?si?autoplay=1&mute=1&cc_load_policy=1&playsinline=1&modestbranding=1&controls=0&fs=1&rel=0"
-  allow="autoplay; fullscreen"
-  allowfullscreen>
-</iframe>
+<!-- The iframe will be inserted by JavaScript -->
+<div id="player"></div>
+
+<script>
+  // ✨ CHANGE THIS ID TO CHANGE VIDEOS ✨
+  const VIDEO_ID = '8po-LoL8Lz0'; // <— only edit this line
+
+  // build the iframe URL automatically with all parameters
+  const embedURL = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&cc_load_policy=1&playsinline=1&modestbranding=1&controls=0&fs=1&rel=0`;
+
+  // create and insert the iframe
+  const iframe = document.createElement('iframe');
+  iframe.src = embedURL;
+  iframe.allow = 'autoplay; fullscreen';
+  iframe.allowFullscreen = true;
+  document.getElementById('player').appendChild(iframe);
+</script>
 
 </body>
 </html>
