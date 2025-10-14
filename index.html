@@ -5,23 +5,60 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>YouTube Live Fullscreen</title>
 <style>
-  html,body {
-    margin:0;
-    padding:0;
-    height:100%;
-    background:#000;
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
   }
+  
+  /* Ticker styles */
+  #ticker {
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 9999;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  #ticker-text {
+    display: inline-block;
+    animation: ticker-animation 15s linear infinite;
+  }
+
+  @keyframes ticker-animation {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Fullscreen iframe styles */
   iframe {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    border:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
   }
 </style>
 </head>
 <body>
+
+<!-- Ticker -->
+<div id="ticker">
+  <div id="ticker-text">The program has begun | Please join us at Dever Stage</div>
+</div>
 
 <!-- The iframe will be inserted by JavaScript -->
 <div id="player"></div>
@@ -30,8 +67,8 @@
   // ✨ CHANGE THIS ID TO CHANGE VIDEOS ✨
   const VIDEO_ID = 'iEpJwprxDdk'; // <— only edit this line
 
- // build the iframe URL automatically with all parameters
-const embedURL = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&cc_load_policy=1&playsinline=1&modestbranding=1&controls=0&fs=1&rel=0`;
+  // build the iframe URL automatically with all parameters
+  const embedURL = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&cc_load_policy=1&playsinline=1&modestbranding=1&controls=0&fs=1&rel=0`;
 
   // create and insert the iframe
   const iframe = document.createElement('iframe');
